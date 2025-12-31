@@ -8,9 +8,11 @@
 //   return await res.json()
 // }
 
-// const API_BASE = "https://myvuepageexpress.vercel.app"
+const API_BASE = "https://myvuepageexpress.vercel.app";
 
 export async function jsonget() {
-  const res = await fetch(`https://myvuepageexpress.vercel.app/api/jsonget`)
-  return res.json()
+  const url = new URL("/api/jsonget", API_BASE).toString();
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.json();
 }
