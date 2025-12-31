@@ -8,8 +8,9 @@
 //   return await res.json()
 // }
 
-const API_BASE = "https://myvuepageexpress.vercel.app"
+// const API_BASE = "https://myvuepageexpress.vercel.app"
+
 export async function jsonget() {
-  const res = await fetch(`${API_BASE}/api/jsonget`)
+  const res = await fetch(`https://myvuepageexpress.vercel.app/api/jsonget`)
   return res.json()
 }
