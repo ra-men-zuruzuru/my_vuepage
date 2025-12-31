@@ -8,7 +8,7 @@
 //   return await res.json()
 // }
 
-const API_BASE = import.meta.env.VITE_API_URL ?? ''
+const API_BASE = import.meta.env.vite_api_route ?? ''
 export async function jsonget() {
   const res = await fetch(`${API_BASE}/api/jsonget`)
   return res.json()
