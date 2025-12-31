@@ -8,7 +8,7 @@
 //   return await res.json()
 // }
 
-const API_BASE = import.meta.env.vite_api_route ?? ''
+const API_BASE = "https://myvuepageexpress-2fjcmvcpy-igadai0226-gmailcoms-projects.vercel.app/"
 export async function jsonget() {
   const res = await fetch(`${API_BASE}/api/jsonget`)
   return res.json()
