@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import BaseCard from '@/components/ui/BaseCard.vue'
 import { useUserInput } from '@/stores/userInput'
-import { createComment } from 'src/api/commentApi'
+import { createComment } from '../api/commentApi'
 import { ref, watch } from 'vue'
 
 const userInput = useUserInput()
