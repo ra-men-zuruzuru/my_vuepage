@@ -4,33 +4,34 @@
 
   <v-row cols="12" class="margin-3">
     <v-col v-for="item in cards" :key="item.id">
-      <BaseCard
-        :append-icon="item.appendIcon"
-        :title="item.title"
-        :subTitle="item.subTitle"
-        :text="item.text"
-      />
+      <BaseCard :append-icon="item.appendIcon" :title="item.title" :subTitle="item.subTitle" :text="item.text" />
     </v-col>
   </v-row>
 
   <div class="d-flex flex-column align-center pa-16 margin-3" width="750">
     <h2 class="mb-1 align-self-start">Enter your name</h2>
-    <v-text-field
-      variant="outlined"
-      label="Name"
-      color="primary"
-      v-model="userName"
-      style="width: 100%"
-    />
+    <v-text-field variant="outlined" label="Name" color="primary" v-model="userName" style="width: 100%" />
   </div>
+
+
+  <div>
+    <v-form @submit.prevent="submit">
+      <v-text-field v-model="comment" label="comment"></v-text-field>
+
+      <v-btn class="mt-2" text="Submit" type="submit" block></v-btn>
+    </v-form>
+  </div>
+
 </template>
 
 <script setup lang="ts">
 import BaseCard from '@/components/ui/BaseCard.vue'
 import { useUserInput } from '@/stores/userInput'
+import { createComment } from 'src/api/commentApi'
 import { ref, watch } from 'vue'
 
 const userInput = useUserInput()
+const comment = ref('')
 
 class Card {
   appendIcon: string
@@ -61,6 +62,11 @@ const cards: Card[] = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.',
   ),
 ]
+
+//submitボタン押されたときに発火
+async function submit() {
+  createComment(comment.value)
+}
 
 //userNameが変更されるたび、ストアのuserNameが更新される
 watch(userName, (s) => {
